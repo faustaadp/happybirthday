@@ -1,21 +1,18 @@
 // trigger to play music in the background with sweetalert
 window.addEventListener('load', () => {
   Swal.fire({
-    title: 'Do you want to play music in the background?',
+    title: 'Halo, udah siap sayangku?',
     // text: "You won't be able to revert this!",
     icon: 'warning',
-    showCancelButton: true,
+    showCancelButton: false,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: 'Yes',
-    cancelButtonText: 'No',
+    confirmButtonText: 'Udah',
   }).then((result) => {
     if (result.isConfirmed) {
       document.querySelector('.song').play();
       resolveFetch().then(animationTimeline());
-    } else {
-      resolveFetch().then(animationTimeline());
-    }
+    } 
   });
 });
 
@@ -115,6 +112,12 @@ const animationTimeline = () => {
       },
     "+=1")
     .from(".idea-1", 0.7, ideaTextTrans)
+    .to(".idea-1 strong", 0.5, {
+      scale: 1.2,
+      x: 0,
+      backgroundColor: "rgb(21, 161, 237)",
+      color: "#fff",
+    })
     .to(".idea-1", 0.7, ideaTextTransLeave, "+=2.5")
     .from(".idea-2", 0.7, ideaTextTrans)
     .to(".idea-2", 0.7, ideaTextTransLeave, "+=2.5")
@@ -126,8 +129,6 @@ const animationTimeline = () => {
       color: "#fff",
     })
     .to(".idea-3", 0.7, ideaTextTransLeave, "+=2.5")
-    .from(".idea-4", 0.7, ideaTextTrans)
-    .to(".idea-4", 0.7, ideaTextTransLeave, "+=2.5")
     .from(
       ".idea-5",
       0.7, {
@@ -253,7 +254,7 @@ const animationTimeline = () => {
     )
     .to(".six", 0.5, {
       opacity: 0,
-      y: 30,
+      y: 5,
       zIndex: "-1",
     })
     .staggerFrom(".nine p", 1, ideaTextTrans, 1.2)
